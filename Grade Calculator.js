@@ -1,6 +1,7 @@
 
 // Marks
 let marks = prompt("Enter you marks");
+let marks = parseInt(marks);
 
 if (marks > 100 || marks < 0) {
     alert("Wrong Marks. Marks must be between 0-100");
