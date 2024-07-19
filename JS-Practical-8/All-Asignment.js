@@ -197,6 +197,7 @@ console.log("Appointment scheduled for: " + appointmentDate + "\n");
 
 // let countdownDate = new Date(prompt("Enter the target date and time (YYYY-MM-DDTHH:mm:ss):"));
 let countdownDate = new Date("2024-07-19T10:19:30");
+// change the upper time in date object to start the countdown
 
 let timerInterval = setInterval(() => {
     let now = new Date();
