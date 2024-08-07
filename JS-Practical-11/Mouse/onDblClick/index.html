@@ -1,0 +1,67 @@
+<!-- Dblclick: Create a zoom feature for an image gallery that zooms in/out on double-click. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zooming Effect</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #main {
+            width: 480px;
+            height: 480px;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Double click to zoom</h2>
+    <div id="main" ondblclick="zoom()">
+        <img id="image" src="valley.jpg" alt="">
+    </div>
+
+
+    <script>
+        let zoomed = false
+
+        function zoom() {
+            let image = document.getElementById('image');
+
+            if (!zoomed) {
+                image.style.transform = 'scale(1.5)';
+                zoomed = true;
+            } else {
+                image.style.transform = 'scale(1)';
+                zoomed = false
+            }
+        }
+    </script>
+</body>
+
+</html>
