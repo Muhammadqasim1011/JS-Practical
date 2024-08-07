@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Tip</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            font-family: sans-serif;
+        }
+
+        .product-container {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .product{
+            width: 440px;
+            cursor: text;
+        }
+        
+        .product img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: 105%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 1;
+            font-size: 14px;
+            width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="product-container">
+        <h2>Hover on the img to show the tool tip.</h2>
+        <div class="product" onmouseover="showTooltip()" onmouseout="hideTooltip()">
+            <img src="Cricket Logo.jpg" alt="Product Image">
+            <div class="tooltip" id="tooltip">This is a Cricket Club Logo</div>
+        </div>
+    </div>
+
+    <script>
+        let tooltip = document.getElementById('tooltip');
+        
+        function showTooltip() {
+            tooltip.style.display = 'block';
+        }
+
+        function hideTooltip() {
+            tooltip.style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>
