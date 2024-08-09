@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .dropzone {
+            border: 2px dashed #007bff;
+            border-radius: 8px;
+            width: 300px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #007bff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .dropzone.hover {
+            border-color: #0056b3;
+            color: #0056b3;
+        }
+
+        .file-list {
+            margin-top: 20px;
+        }
+
+        .file-list ul {
+            list-style: none;
+        }
+
+        .file-list li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dropzone" ondragover="allowDrop(event)" ondrop="handleDrop(event)" onclick="triggerFileInput()">
+        Drag & Drop Files Here or Click to Upload
+    </div>
+    <input type="file" id="fileInput" style="display: none;" multiple onchange="handleFiles(this.files)">
+    <div class="file-list" id="fileList"></div>
+    
+
+    <script>
+        let dropzone = document.querySelector('.dropzone');
+        let fileInput = document.getElementById('fileInput');
+        let fileList = document.getElementById('fileList');
+
+        function allowDrop(event) {
+            event.preventDefault();
+            dropzone.classList.add('hover');
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            dropzone.classList.remove('hover');
+            handleFiles(event.dataTransfer.files);
+        }
+
+        function triggerFileInput() {
+            fileInput.click();
+        }
+
+        function handleFiles(files) {
+            fileList.innerHTML = '';
+            for (let file of files) {
+                let li = document.createElement('li');
+                li.textContent = file.name;
+                fileList.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>
