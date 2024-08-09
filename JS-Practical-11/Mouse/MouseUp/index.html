@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Color</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .btnstyle{
+            background-color: #4CAF50;
+            border: none;
+            padding: 20px 40px;
+            font-size: 2rem;
+            border-radius: 8px;
+            color: #fff;
+        }
+        .btnstyle:hover{
+            background: #2f8032;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Release the button to Change the color of Button. Reload the page to do it again</h2>
+
+    <button id="btn" class="btnstyle" onmouseup="changeColor();">Press & Release</button>
+
+    <script>
+        const btn = document.getElementById("btn")
+        function changeColor() {
+            btn.style.backgroundColor = "red";
+        }
+    </script>
+</body>
+</html>
