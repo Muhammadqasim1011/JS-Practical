@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Drawing Canvas</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        canvas {
+            border: 1px solid #333;
+            cursor: crosshair;
+        }
+
+        .controls {
+            margin-top: 10px;
+        }
+
+        button {
+            margin-right: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .color-picker {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .color-picker input {
+            margin-top: 10px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .line-width {
+            margin: 10px 0;
+        }
+
+        .line-width label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Draw on the Canvas</h1>
+
+    <div class="color-picker">
+        <input type="color" id="colorPicker" onchange="changeColor(event)" value="#000000">
+    </div>
+
+    <div class="line-width">
+        <label for="lineWidth">Line Width:</label>
+        <input type="range" id="lineWidth" min="1" max="10" value="2" onchange="changeLineWidth(event)">
+    </div>
+
+    <canvas id="drawingCanvas" width="900" height="420"
+        onmousedown="startDrawing(event)"
+        onmousemove="draw(event)"
+        onmouseup="stopDrawing()"
+        onmouseout="stopDrawing()">
+    </canvas>
+
+    <div class="controls">
+        <button onclick="clearCanvas()">Clear</button>
+        <button onclick="saveCanvas()">Save</button>
+    </div>
+
+    <script>
+        let canvas = document.getElementById('drawingCanvas');
+        let ctx = canvas.getContext('2d');
+        let drawing = false;
+        let currentColor = '#000000';
+        let lineWidth = 2;
+
+        function startDrawing(event) {
+            drawing = true;
+            ctx.beginPath();
+            ctx.moveTo(event.offsetX, event.offsetY);
+        }
+
+        function draw(event) {
+            if (drawing) {
+                ctx.lineTo(event.offsetX, event.offsetY);
+                ctx.strokeStyle = currentColor;
+                ctx.lineWidth = lineWidth;
+                ctx.stroke();
+            }
+        }
+
+        function stopDrawing() {
+            drawing = false;
+            ctx.closePath();
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function saveCanvas() {
+            let link = document.createElement('a');
+            link.download = 'drawing.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        function changeColor(event) {
+            currentColor = event.target.value;
+        }
+
+        function changeLineWidth(event) {
+            lineWidth = event.target.value;
+        }
+    </script>
+
+</body>
+</html>
