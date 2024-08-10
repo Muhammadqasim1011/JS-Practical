@@ -87,7 +87,7 @@
         <div class="messages" id="messages"></div>
         <div class="input-container">
             <input type="text" id="messageInput" class="message-input" placeholder="Type a message..."
-                onchange="sendMessage()">
+                onkeydown="sendMessageKey(event)">
             <button class="send-button" onclick="sendMessage()">Send</button>
         </div>
     </div>
@@ -111,7 +111,12 @@
                 alert('Please write the Message');
             }
         }
-
+        function sendMessageKey(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
+                sendMessage(); // Send the message
+            }
+        };
     </script>
 </body>
 
