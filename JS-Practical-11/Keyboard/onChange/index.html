@@ -93,6 +93,7 @@
                 messageElement.classList.add('message');
                 messageElement.textContent = message;
                 messagesContainer.appendChild(messageElement);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
                 messageInput.value = '';
             } else {
