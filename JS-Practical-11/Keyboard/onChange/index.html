@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .messages {
+            flex: 1;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .message {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 4px;
+            max-width: 80%;
+        }
+        .input-container {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+        .message-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-size: 16px;
+        }
+        .send-button {
+            padding: 15px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .send-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="messages" id="messages"></div>
+        <div class="input-container">
+            <input type="text" id="messageInput" class="message-input" placeholder="Type a message..." onchange="sendMessage()">
+            <button class="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        
+        
+        function sendMessage()  {
+            const messageInput = document.getElementById('messageInput');
+            const messagesContainer = document.getElementById('messages');
+            const message = messageInput.value.trim();
+            if (message) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.textContent = message;
+                messagesContainer.appendChild(messageElement);
+
+                messageInput.value = '';
+            } else {
+                alert('Please write the Message');
+            }
+        }
+
+    </script>
+</body>
+</html>
