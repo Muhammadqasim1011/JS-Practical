@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Bar</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between the button and notification */
+        }
+        .notification {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+        .notification.fade-out {
+            opacity: 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="toggleNotification()">For Notification Click</button>
+        <div class="notification" id="notification" onmouseleave="applyFadeOutEffect()">
+            This is a notification bar. Hover over me!
+        </div>
+    </div>
+
+    <script>
+        let notification = document.getElementById('notification');
+
+        function applyFadeOutEffect() {
+            notification.classList.add('fade-out');
+        }
+
+        function toggleNotification() {
+            if (notification.classList.contains('fade-out')) {
+                notification.classList.remove('fade-out');
+            } else {
+                notification.classList.add('fade-out');
+            }
+        }
+    </script>
+</body>
+</html>
