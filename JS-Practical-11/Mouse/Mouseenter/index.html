@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Menu</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body {
+
+        }
+        nav{
+            display: flex;
+            gap: 2rem;
+            justify-content: space-between;
+            padding: 2rem;
+        }
+        li{
+            list-style: none;
+            padding: 20px 40px;
+            background: darkcyan;
+            transition: 0.3s;
+            color: white;
+            font-size: 1.3rem;
+        }
+        li.fade {
+            background-color: rgb(0, 21, 255);
+        }
+    </style>
+</head>
+<body>
+    
+    <nav id="nav">
+        <li onmouseenter="fadeIn(this)" onmouseleave="fadeOut(this)" class="item">Logo Design</li>
+        <li onmouseenter="fadeIn(this)" onmouseleave="fadeOut(this)" class="item">Home-1</li>
+        <li onmouseenter="fadeIn(this)" onmouseleave="fadeOut(this)" class="item">Home-2</li>
+        <li onmouseenter="fadeIn(this)" onmouseleave="fadeOut(this)" class="item">Home-3</li>
+        <li onmouseenter="fadeIn(this)" onmouseleave="fadeOut(this)" class="item">Home-4</li>
+    </nav>
+
+    <script>
+        function fadeIn(element) {
+            element.classList.add('fade');
+        }
+        function fadeOut(element) {
+            element.classList.remove('fade');
+        }
+    </script>
+</body>
+</html>
