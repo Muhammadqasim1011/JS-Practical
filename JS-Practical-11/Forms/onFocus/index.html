@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Hints and Real-Time Data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="dataForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name" onfocus="showHint(this);" onblur="hideHint(this);">
+                <div class="hint">Please enter your full name.</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" onfocus="showHint(this);" onblur="hideHint(this);">
+                <div class="hint">We will never share your email with anyone else.</div>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <input type="text" id="message" placeholder="Enter your message" onfocus="showHint(this);" onblur="hideHint(this);">
+                <div class="hint">Your message will be sent to us.</div>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function showHint(input) {
+            const hint = input.nextElementSibling;
+            if (hint && hint.classList.contains('hint')) {
+                hint.style.display = 'block';
+            }
+        }
+
+        function hideHint(input) {
+            const hint = input.nextElementSibling;
+            if (hint && hint.classList.contains('hint')) {
+                hint.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>
