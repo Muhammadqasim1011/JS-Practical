@@ -7,7 +7,7 @@ for (let i = 0; i < totalNumbers; i++) {
     numberArray.push(randomNumber);
 }
 
-.console.log(numberArray);
+console.log(numberArray);
 
 if (numberArray.length === 0) {
     console.error("Array is empty");
