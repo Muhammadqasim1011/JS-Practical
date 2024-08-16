@@ -5,13 +5,13 @@ string1 = string1.trim();
 console.log(string1);
 
 // Task-2: Get the substring starting from index 5 to 10 from the string: "Hello World"? 
-
+// first is include and last exclude
 let string2 = "Hello World"
 let substring = string2.substring(5, 11);
 console.log(substring);
 
 // Task-3: Extract the first 5 characters from the string: "Hello World"?
-
+// Start is include and lenght how many
 let string3 = "Hello World";
 let extract = string3.substr(0, 5);
 console.log(extract);
