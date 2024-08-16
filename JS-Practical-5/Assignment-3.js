@@ -1,7 +1,8 @@
-let array = [1, 2, 3, 4, 5];
+let array = [3, 4, 5];
 
-for (let i = 1; i < array.length; i++) {
-  if (array[i] > array[i - 1]) {
+array.unshift(1,2);
+array.pop();
+
+for (let i = 0; i < array.length; i++) {
     console.log(array[i]);
-  }
 }
