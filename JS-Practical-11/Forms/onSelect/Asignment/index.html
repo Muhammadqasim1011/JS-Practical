@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ffffff;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #0056b3;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <select name="items" onchange="changeImg()" id="select">
+        <option value="1">Picture 1</option>
+        <option value="2">Picture 2</option>
+        <option value="3">Picture 3</option>
+        <option value="4">Picture 4</option>
+    </select>
+
+    <img src="image1.png" id="img" alt="Selected Image">
+    
+    <script>
+        let img = document.getElementById('img');
+        let select = document.getElementById('select');
+
+        function changeImg() {
+            switch (select.value) {
+                case '1':
+                    img.src = 'image1.png';
+                    break;
+                case '2':
+                    img.src = 'image2.png';
+                    break;
+                case '3':
+                    img.src = 'image3.png';
+                    break;
+                case '4':
+                    img.src = 'image4.png';
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
