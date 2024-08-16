@@ -7,7 +7,7 @@ console.log(string1);
 // Task-2: Get the substring starting from index 5 to 10 from the string: "Hello World"? 
 
 let string2 = "Hello World"
-let substring = string2.substring(5, 10);
+let substring = string2.substring(4, 10);
 console.log(substring);
 
 // Task-3: Extract the first 5 characters from the string: "Hello World"?
