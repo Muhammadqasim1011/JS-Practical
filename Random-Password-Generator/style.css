@@ -90,3 +90,22 @@ label {
     max-width: 200px;
     width: 100%;
 }
+
+@media (max-width:700px) {
+    .container{
+        padding: 1rem;
+    }
+    .app{
+        width: 100%;
+    }
+    h1{
+        font-size: 1rem;
+    }
+    button {
+        font-size: 0.9rem;
+    }
+
+    #range{
+        width: 100%;
+    }
+}
