@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Qasim</h1>
+        <nav>
+            <li>Home</li>
+            <li>About</li>
+            <li>Learn</li>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Random Password Generator</h1>
+        <div class="app">
+            <input type="text" class="result" id="result">
+            <button onclick="GRP(updaterange())">Generrate Password</button>
+            <p for="range" id="para">Lenth: 0</p>
+            <input type="range" onchange="updaterange()" name="range" id="range" max="40" min="0" value="0">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
