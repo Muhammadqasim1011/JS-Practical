@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo WebApp</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="message-box" id="message-boxx">
+        <p id="message">You Sucessfully completed</p>
+    </div>
+
+    <header>
+        <h1>Qasim</h1>
+
+        <nav>
+            <li><a target="_blank" href="">Github</a></li>
+            <li><a target="_blank" href="">LinkedIn</a></li>
+            <li><a target="_blank" href="mailto:akhundqasim1011@gmail.com" >Email-Me</a></li>
+        </nav>
+    </header>
+
+    <div class="app-container">
+
+
+        <div class="addtask-section">
+            <h1>TODO-APP</h1>
+
+            <div class="input-box">
+                <input type="text" placeholder="Write ToDo here..." id="user-input" autocomplete="off">
+                <button id="add-task">Add Task</button>
+            </div>
+        </div>
+
+        <div class="all-todos">
+            <div class="pending">
+                <h2>pending</h2>
+                <div id="pending-box">
+
+                </div>
+            </div>
+            <div class="process">
+                <h2>Process</h2>
+                <div id="process-box">
+
+                </div>
+            </div>
+            <div class="complete">
+                <h2>complete</h2>
+                <div id="complete-box">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    color: #444;
+    font-family: sans-serif;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+body {
+    background: linear-gradient(#ffd000, #b35f00);
+    min-height: 100vh;
+}
+
+header {
+    background: #eee;
+    padding: 1rem;
+    max-width: 1300px;
+    width: 94%;
+    height: 100px;
+    margin: auto;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    font-weight: 600;
+}
+
+a {
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #b35f00;
+}
+
+.app-container {
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1300px;
+    width: 94%;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+}
+
+.addtask-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+    background: white;
+    padding: inherit;
+
+}
+
+.addtask-section h1 {
+    background: #ffd000;
+    padding: inherit;
+    color: white;
+}
+
+.input-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.input-box input {
+    padding: 1rem;
+    max-width: 700px;
+    width: 100%;
+    border: 2px solid;
+    font-size: 1rem;
+}
+
+.input-box button {
+    width: 140px;
+    font-size: 1.2rem;
+    border: none;
+    background: #ffd000;
+    color: white;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.input-box button:hover {
+    background: #ffae00;
+}
+
+.all-todos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.all-todos>div {
+    padding: 1rem;
+    background: white;
+}
+
+.all-todos li {
+    border-radius: 10px;
+    color: #fff;
+    background: blue;
+    padding: 10px 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.all-todos h2 {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+li img {
+    width: 30px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.all-todos .process li {
+    background: orange;
+}
+
+.all-todos .complete li {
+    background: green;
+}
+
+.message-box {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffd000;
+    padding: 1rem;
+    font-weight: 600;
+    opacity: 0;
+    animation: animatemessage 1s ease-out forwards;
+    display: none;
+}
+
+
+@keyframes animatemessage {
+    from {
+        opacity: 0;
+        top: -125px;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.message-box p {
+    color: #fff;
+}
+
+@media (max-width:1200px) {
+    li img {
+        width: 20px;
+    }
+}
+@media (max-width:900px) {
+    .all-todos{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width:700px) {
+    header{
+        height: 70px;
+    }
+
+    .app-container{
+        margin-top: 1.4rem;
+        margin-bottom: 1.4rem;
+        gap: 1.4rem;
+        padding: 0.4rem;
+    }
+
+    .all-todos{
+        grid-template-columns: 1fr;
+    }
+    .all-todos > div{
+        padding: 0.7rem;
+    }
+    .all-todos li{
+        padding: 7px 0.7rem;
+    }
+}
