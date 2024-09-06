@@ -55,6 +55,7 @@ nav a:hover {
 .app h1{
     font-size: 3.4rem;
     letter-spacing: 4px;
+    margin-bottom: 2rem;
 }
 
 @media (max-width:700px) {
