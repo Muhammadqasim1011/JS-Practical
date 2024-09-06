@@ -1,8 +1,8 @@
 // Variables
 
-let pendingArray = ['Eat', 'Drink', 'waste'];
-let processArray = ['Eat', 'Drink', 'waste'];
-let completeArray = ['Eat', 'Drink', 'waste'];
+let pendingArray = [];
+let processArray = [];
+let completeArray = [];
 
 let userInput = document.getElementById('user-input');
 let addTaskButton = document.getElementById('add-task');
