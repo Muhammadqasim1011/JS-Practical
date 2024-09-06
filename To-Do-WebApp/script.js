@@ -1,8 +1,8 @@
 // Variables
 
-let pendingArray = [];
-let processArray = [];
-let completeArray = [];
+let pendingArray = JSON.parse(localStorage.getItem('pendingStore')) || [];
+let processArray = JSON.parse(localStorage.getItem('processStore')) || [];;
+let completeArray = JSON.parse(localStorage.getItem('completeStore')) || [];;
 
 let userInput = document.getElementById('user-input');
 let addTaskButton = document.getElementById('add-task');
@@ -26,12 +26,24 @@ let sendToPendingBtn = document.getElementsByClassName('send-to-pending');
 let sendToompleteBtn = document.getElementsByClassName('send-to-complete');
 
 function addTask() {
+    let newTodo = userInput.value.trim();
+
     if (userInput.value === "") {
         message.textContent = 'Enter Somthings to add.';
         messageBox.style.display = 'block';
+        messageBox.style.backgroundColor = 'red';
         setTimeout(() => {
             messageBox.style.display = 'none';
         }, 2000);
+    } else if (pendingArray.includes(newTodo)) {
+        messageBox.style.display = 'block';
+        message.textContent = 'Todo Already Exists!';
+        messageBox.style.backgroundColor = 'red'
+        userInput.value = '';
+        setTimeout(() => {
+            messageBox.style.display = 'none';
+            messageBox.style.backgroundColor = '#ffd000'
+        }, 1400);
     } else {
         let userValue = userInput.value;
         pendingArray.push(userValue);
@@ -45,6 +57,7 @@ function addTask() {
         }, 1400);
 
         render();
+        localStorage.setItem('pendingStore', JSON.stringify(pendingArray));
     }
 }
 
@@ -93,6 +106,7 @@ function render() {
                 messageBox.style.display = 'none';
                 messageBox.style.backgroundColor = '#ffd000'
             }, 1400);
+            localStorage.setItem('pendingStore', JSON.stringify(pendingArray));
         })
     });
 
@@ -109,6 +123,7 @@ function render() {
                 messageBox.style.display = 'none';
                 messageBox.style.backgroundColor = '#ffd000'
             }, 1400);
+            localStorage.setItem('processStore', JSON.stringify(processArray));
         })
     });
 
@@ -125,6 +140,7 @@ function render() {
                 messageBox.style.display = 'none';
                 messageBox.style.backgroundColor = '#ffd000'
             }, 1400);
+            localStorage.setItem('completeStore', JSON.stringify(completeArray));
         })
     });
 
@@ -143,6 +159,9 @@ function render() {
                 messageBox.style.display = 'none';
                 messageBox.style.backgroundColor = '#ffd000'
             }, 1400);
+
+            localStorage.setItem('pendingStore', JSON.stringify(pendingArray));
+            localStorage.setItem('processStore', JSON.stringify(processArray));
         })
     });
 
@@ -160,6 +179,8 @@ function render() {
                 messageBox.style.display = 'none';
                 messageBox.style.backgroundColor = '#ffd000'
             }, 1400);
+            localStorage.setItem('pendingStore', JSON.stringify(completeArray));
+            localStorage.setItem('processStore', JSON.stringify(processArray));
         })
     });
 
@@ -177,6 +198,9 @@ function render() {
                 messageBox.style.display = 'none';
                 messageBox.style.backgroundColor = '#ffd000'
             }, 1400);
+
+            localStorage.setItem('pendingStore', JSON.stringify(pendingArray));
+            localStorage.setItem('processStore', JSON.stringify(processArray));
         })
     });
 
@@ -194,8 +218,77 @@ function render() {
                 messageBox.style.display = 'none';
                 messageBox.style.backgroundColor = '#ffd000'
             }, 1400);
+            localStorage.setItem('completeStore', JSON.stringify(completeArray));
+            localStorage.setItem('processStore', JSON.stringify(processArray));
         })
     });
+
+    document.querySelectorAll('.edit-pending').forEach(editButton => {
+        editButton.addEventListener('click', (e) => {
+            let index = parseInt(e.target.getAttribute('data-set')); // Ensure index is a number
+            let promptBox = document.querySelector(".prompt");
+            let updateInput = document.getElementById("update-todo");
+            let updateBTN = document.getElementById("update-btn");
+
+            promptBox.classList.add("show");
+
+            updateInput.value = pendingArray[index];
+
+            // Flag to ensure event listeners are only added once
+            let eventListenerAdded = false;
+
+            function updateTodoItem() {
+                let updateTodo = updateInput.value.trim();
+                if (updateTodo !== "") {
+                    
+                    const todoExists = pendingArray.some((todo, i) => i !== index && todo.toLowerCase() === updateTodo.toLowerCase());
+
+                    if (todoExists) {
+                        promptBox.classList.remove("show");
+                        messageBox.style.display = 'block';
+                        message.textContent = 'Todo Already Exists!';
+                        messageBox.style.backgroundColor = 'red';
+                        updateInput.value = '';
+                        setTimeout(() => {
+                            messageBox.style.display = 'none';
+                            messageBox.style.backgroundColor = '#ffd000';
+                        }, 1400);
+                    } else {
+                        // Update the to-do item
+                        pendingArray[index] = updateTodo;
+                        render();
+                        localStorage.setItem('pendingStore', JSON.stringify(pendingArray));
+
+                        promptBox.classList.remove("show");
+
+                        messageBox.style.display = 'block';
+                        message.textContent = 'To-do item updated successfully!';
+                        messageBox.style.backgroundColor = 'green';
+                        setTimeout(() => {
+                            messageBox.style.display = 'none';
+                            messageBox.style.backgroundColor = '#ffd000';
+                        }, 1400);
+                    }
+                }
+            }
+
+            // Only add event listeners if they haven't been added already
+            if (!eventListenerAdded) {
+                updateInput.addEventListener('keypress', function (event) {
+                    if (event.key === 'Enter') {
+                        updateTodoItem();
+                    }
+                });
+
+                updateBTN.addEventListener('click', function () {
+                    updateTodoItem();
+                });
+
+                eventListenerAdded = true;  // Mark that the event listeners have been added
+            }
+        });
+    });
+
 }
 
 
