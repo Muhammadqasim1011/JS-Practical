@@ -59,7 +59,9 @@ h4{
 .form-group input:focus{
     border: 1px solid #4CAF50;
 }
-
+span{
+    font-weight: 600;
+}
 button{
     height: 44px;
     width: 100%;

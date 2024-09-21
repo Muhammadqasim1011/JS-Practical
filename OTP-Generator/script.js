@@ -66,6 +66,7 @@ nextButton.addEventListener('click', () => {
     step1.style.display = "none";
     step2.style.display = "block";
     nextButton.innerHTML = "Next &rarr;";
+    verifyEmail.innerHTML = emailAddress.value;
   }, (err) => {
     console.log('Failed to send email', err);
     messageBox.style.opacity = "1"
@@ -92,3 +93,9 @@ verifyButton.addEventListener("click", ()=>{
     }, 1000);   
   }
 })
+
+function changeEmail() {
+  step1.style.display = "block"
+  step2.style.display = "none"
+  step3.style.display = "none"
+}
