@@ -11,15 +11,15 @@ let OTP = "";
 
 window.addEventListener('load', () => {
   emailjs.init("0khSDAJBK5Cihm4SF");
-  step2.style.display = "none"
-  step3.style.display = "none"
-  nextButton.classList.add('disable')
-})
+  step2.style.display = "none";
+  step3.style.display = "none";
+  nextButton.classList.add('disable');
+});
 
-function manageMassage(color, opacity, text){
-  messageBox.style.opacity = co
-  messageBox.style.opacity = opacity
-  messageBox.innerHTML = text
+function manageMassage(color, opacity, text) {
+  messageBox.style.color = color;  // Correct variable
+  messageBox.style.opacity = opacity;
+  messageBox.innerHTML = text;
 }
 
 const validateEmail = (email) => {
@@ -29,7 +29,7 @@ const validateEmail = (email) => {
   } else {
     nextButton.classList.add('disable');
   }
-}
+};
 
 const generateOTP = () => {
   return Math.floor(1000 + Math.random() * 9000);
@@ -40,26 +40,25 @@ inputs.forEach((input) => {
     if (e.target.value && e.target.value.length >= 1) {
       e.target.value = e.target.value.substr(0, 1);
     }
-    if (inputs[0].value !="" && inputs[1].value !="" && inputs[2].value !="" && inputs[3].value !="") {
+    if (inputs[0].value !== "" && inputs[1].value !== "" && inputs[2].value !== "" && inputs[3].value !== "") {
       verifyButton.classList.remove('disable');
-    } else{
+    } else {
       verifyButton.classList.add('disable');
     }
   });
 });
 
-
 let serviceID = "service_lkzjfum";
 let templateID = "template_amvb9ke";
 nextButton.addEventListener('click', () => {
   OTP = generateOTP();
-  nextButton.innerHTML = "&#9889; Sending"
+  nextButton.innerHTML = "&#9889; Sending";
   let templateParameter = {
     fromName: 'Muhammad Qasim Dev Community',
     OTP: OTP,
-    message: 'Please Find out the atach file',
+    message: 'Please find the attached file',
     replyTo: emailAddress.value,
-  }
+  };
 
   emailjs.send(serviceID, templateID, templateParameter).then((res) => {
     console.log('Email sent successfully', res);
@@ -69,33 +68,31 @@ nextButton.addEventListener('click', () => {
     verifyEmail.innerHTML = emailAddress.value;
   }, (err) => {
     console.log('Failed to send email', err);
-    messageBox.style.opacity = "1"
-    messageBox.innerHTML = "Failed to send email"
+    manageMassage("red", "1", "Failed to send email");
     setTimeout(() => {
-    messageBox.style.opacity = "0";
+      manageMassage("", "0", "");
     }, 2000);
-  })
+  });
 });
 
-
-verifyButton.addEventListener("click", ()=>{
+verifyButton.addEventListener("click", () => {
   let values = "";
-  inputs.forEach((input) =>{
+  inputs.forEach((input) => {
     values += input.value;
   });
   if (OTP == values) {
     step2.style.display = "none";
-    step3.style.display = "block"; 
-  }else{
-    verifyButton.classList.add('error-shake')
+    step3.style.display = "block";
+  } else {
+    verifyButton.classList.add('error-shake');
     setTimeout(() => {
-      verifyButton.classList.remove('error-shake')
-    }, 1000);   
+      verifyButton.classList.remove('error-shake');
+    }, 1000);
   }
-})
+});
 
 function changeEmail() {
-  step1.style.display = "block"
-  step2.style.display = "none"
-  step3.style.display = "none"
+  step1.style.display = "block";
+  step2.style.display = "none";
+  step3.style.display = "none";
 }
