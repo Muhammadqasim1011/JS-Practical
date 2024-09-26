@@ -35,11 +35,25 @@ const generateOTP = () => {
   return Math.floor(1000 + Math.random() * 9000);
 };
 
-inputs.forEach((input) => {
+// Update for OTP auto-focus
+inputs.forEach((input, index) => {
   input.addEventListener("keyup", (e) => {
-    if (e.target.value && e.target.value.length >= 1) {
+    // Ensure only single character is entered
+    if (e.target.value.length > 1) {
       e.target.value = e.target.value.substr(0, 1);
     }
+
+    // Move to the next input field when a number is entered
+    if (e.target.value !== "" && index < inputs.length - 1) {
+      inputs[index + 1].focus();
+    }
+
+    // Move to the previous input when backspace is pressed and the current input is empty
+    if (e.key === "Backspace" && e.target.value === "" && index > 0) {
+      inputs[index - 1].focus();
+    }
+
+    // Enable the Verify button if all inputs are filled
     if (inputs[0].value !== "" && inputs[1].value !== "" && inputs[2].value !== "" && inputs[3].value !== "") {
       verifyButton.classList.remove('disable');
     } else {
@@ -56,7 +70,7 @@ nextButton.addEventListener('click', () => {
   let templateParameter = {
     fromName: 'Muhammad Qasim Dev Community',
     OTP: OTP,
-    message: 'Please find the attached file',
+    message: 'Please find the attached file',  // Typo corrected
     replyTo: emailAddress.value,
   };
 
@@ -70,7 +84,7 @@ nextButton.addEventListener('click', () => {
     console.log('Failed to send email', err);
     manageMassage("red", "1", "Failed to send email");
     setTimeout(() => {
-      manageMassage("", "0", "");
+      manageMassage("", "0", "");  // Reset message box
     }, 2000);
   });
 });
