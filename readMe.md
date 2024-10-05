@@ -127,14 +127,5 @@ This repository is open-source and available under the [MIT License](./LICENSE).
 ### Connect with Me!
 
 - **GitHub**: [Muhammad Qasim](https://github.com/Muhammadqasim1011)
-- **LinkedIn**: [Your LinkedIn](www.linkedin.com/in/-muhammad-qasim)
-
+- **LinkedIn**: [Your LinkedIn](https://www.linkedin.com/in/-muhammad-qasim)
 ```
-
-### Instructions:
-
-1. Replace the `#` in the LinkedIn section with the actual URL.
-2. Add live demo links if any projects are hosted online.
-3. Ensure the project paths and files are correct in the structure and links.
-
-This structure provides an organized, professional presentation of your projects!
