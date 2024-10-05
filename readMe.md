@@ -123,9 +123,4 @@ Feel free to fork this repository, explore the code, and contribute by submittin
 This repository is open-source and available under the [MIT License](./LICENSE).
 
 ---
-
-### Connect with Me!
-
-- **GitHub**: [Muhammad Qasim](https://github.com/Muhammadqasim1011)
-- **LinkedIn**: [Your LinkedIn](https://www.linkedin.com/in/-muhammad-qasim)
 ```
